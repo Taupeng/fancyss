@@ -35,9 +35,9 @@ get_china_status(){
 	local S1=`echo $ret|grep -Eo "200 OK"`
 	if [ -n "$S1" ]; then
 		local S2=`echo $ret|sed 's/time=//g'|awk '{printf "%.0f ms\n",$(NF -3)}'`
-		log2='国内链接 【'$LOGTIME'】 ✓&nbsp;&nbsp;'$S2''
+		log2='DOM 【'$LOGTIME'】 ✓&nbsp;&nbsp;'$S2''
 	else
-		log2='国内链接 【'$LOGTIME'】 <font color='#FF0000'>X</font>'
+		log2='DOM 【'$LOGTIME'】 <font color='#FF0000'>X</font>'
 	fi
 	# --- httping ---
 }
@@ -63,14 +63,14 @@ get_foreign_status(){
 	#fi
 
 	# --- httping ---
-	local ret=`httping www.google.com.tw -s -Z -c1 -f -t 3 2>/dev/null|sed -n '2p'|sed 's/seq=0//g'|sed 's/([0-9]\+\sbytes),\s//g'`
+	local ret=`httping www.google.com -s -Z -c1 -f -t 3 2>/dev/null|sed -n '2p'|sed 's/seq=0//g'|sed 's/([0-9]\+\sbytes),\s//g'`
 	echo $LOGTIME1 $ret "[`dbus get ssconf_basic_name_$CURRENT`]" >> $LOGFILE_F
 	local S1=`echo $ret|grep -Eo "200 OK"`
 	if [ -n "$S1" ]; then
 		local S2=`echo $ret|sed 's/time=//g'|awk '{printf "%.0f ms\n",$(NF -3)}'`
-		log1='国外链接 【'$LOGTIME'】 ✓&nbsp;&nbsp;'$S2''
+		log1='INTL 【'$LOGTIME'】 ✓&nbsp;&nbsp;'$S2''
 	else
-		log1='国外链接 【'$LOGTIME'】 <font color='#FF0000'>X</font>'
+		log1='INTL 【'$LOGTIME'】 <font color='#FF0000'>X</font>'
 	fi
 }
 

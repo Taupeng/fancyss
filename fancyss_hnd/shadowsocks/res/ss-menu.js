@@ -155,7 +155,7 @@ function pop_111() {
 			type: 2,
 			shade: .7,
 			scrollbar: 0,
-			title: '国内外分流信息:http://ip.koolcenter.com/all',
+			title: 'IP Info:http://ip.koolcenter.com/all',
 			area: ['850px', '350px'],
 			fixed: false,
 			maxmin: true,
@@ -177,19 +177,18 @@ function pop_help() {
 			shadeClose: 1,
 			scrollbar: false,
 			id: 'LAY_layuipro',
-			btn: ['关闭窗口'],
+			btn: ['Close'],
 			btnAlign: 'c',
 			moveType: 1,
 			content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">\
-				<b><% nvram_get("productid"); %> - 科学上网插件 - ' + db_ss["ss_basic_version_local"] + '</b><br><br>\
-				本插件是支持<a target="_blank" href="https://github.com/shadowsocks/shadowsocks-libev" ><u>SS</u></a>、<a target="_blank" href="https://github.com/shadowsocksrr/shadowsocksr-libev"><u>SSR</u></a>、<a target="_blank" href="http://firmware.koolshare.cn/binary/koolgame"><u>KoolGame</u></a>、<a target="_blank" href="https://github.com/v2ray/v2ray-core"><u>V2Ray</u></a>四种客户端的科学上网、游戏加速工具。<br>\
-				本插件仅支持Asuswrt/Merlin hnd platform 4.1.27内核的固件，请不要用于其它固件安装。<br>\
-				使用本插件有任何问题，可以前往<a style="color:#e7bd16" target="_blank" href="https://github.com/hq450/fancyss/issues"><u>github的issue页面</u></a>反馈~<br><br>\
-				● SS/SSR一键脚本：<a style="color:#e7bd16" target="_blank" href="https://github.com/onekeyshell/kcptun_for_ss_ssr/tree/master"><u>一键安装KCPTUN for SS/SSR on Linux</u></a><br>\
-				● koolgame一键脚本：<a style="color:#e7bd16" target="_blank" href="https://github.com/clangcn/game-server"><u>一键安装koolgame服务器端脚本，完美支持nat2</u></a><br>\
-				● V2Ray一键脚本：<a style="color:#e7bd16" target="_blank" href="https://233blog.com/post/17/"><u>V2Ray 搭建和优化详细图文教程</u></a><br>\
-				● 插件交流：<a style="color:#e7bd16" target="_blank" href="https://t.me/joinchat/AAAAAEC7pgV9vPdPcJ4dJw"><u>加入telegram群组</u></a><br><br>\
-				我们的征途是星辰大海 ^_^</div>'
+				<b><% nvram_get("productid"); %> - SS Plugin - ' + db_ss["ss_basic_version_local"] + '</b><br><br>\
+				This plugin supports: <a target="_blank" href="https://github.com/shadowsocks/shadowsocks-libev" ><u>SS</u></a>, <a target="_blank" href="https://github.com/shadowsocksrr/shadowsocksr-libev"><u>SSR</u></a>, <a target="_blank" href="http://firmware.koolshare.cn/binary/koolgame"><u>KoolGame</u></a>, <a target="_blank" href="https://github.com/v2ray/v2ray-core"><u>V2Ray</u></a>.<br>\
+				Currently supporting Asuswrt/Merlin hnd platform kernel firmware 4.1.27, please do not use other firmware.<br>\
+				If you have any questions or issues, please visit <a style="color:#e7bd16" target="_blank" href="https://github.com/hq450/fancyss/issues"><u>issue page on Github</u></a> for more info.<br><br>\
+				● SS/SSR Script: <a style="color:#e7bd16" target="_blank" href="https://github.com/onekeyshell/kcptun_for_ss_ssr/tree/master"><u>KCPTUN installation for SS/SSR on Linux</u></a><br>\
+				● koolgame Script: <a style="color:#e7bd16" target="_blank" href="https://github.com/clangcn/game-server"><u>koolgame server installation, supports NAT2</u></a><br>\
+				● V2Ray Script: <a style="color:#e7bd16" target="_blank" href="https://233blog.com/post/17/"><u>V2Ray Guide</u></a><br>\
+				● Social：<a style="color:#e7bd16" target="_blank" href="https://t.me/joinchat/AAAAAEC7pgV9vPdPcJ4dJw"><u>Join our Telegram</u></a></div>'
 		});
 	});
 }
@@ -198,11 +197,11 @@ function pop_node_add() {
 		layer.open({
 			type: 0,
 			shade: 0.8,
-			title: '警告',
+			title: 'Warning',
 			time: 0,
 			maxmin: true,
-			content: '你尚未添加任何节点信息！<br /> 点击下面按钮添加节点信息！',
-			btn: ['手动添加', '订阅节点', '恢复配置'],
+			content: 'You have not created any nodes yet.<br />Select the options below to add.',
+			btn: ['Add Manually', 'Add Subscription', 'Restore'],
 			btn1: function() {
 				$("#add_ss_node").trigger("click");
 				layer.closeAll();
@@ -310,7 +309,7 @@ function getNowFormatDate(s) {
 	console.log(s, currentdate);
 }
 function menu_hook() {
-	tabtitle[tabtitle.length - 1] = new Array("", "科学上网设置", "负载均衡设置", "Socks5设置", "__INHERIT__");
+	tabtitle[tabtitle.length - 1] = new Array("", "Shadowness", "Load Balancer", "Socks5", "__INHERIT__");
 	tablink[tablink.length - 1] = new Array("", "Module_shadowsocks.asp", "Module_shadowsocks_lb.asp", "Module_shadowsocks_local.asp", "NULL");
 }
 function versionCompare(v1, v2, options) {

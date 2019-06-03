@@ -516,7 +516,7 @@ function count_down_close() {
 								<tr>
 									<td bgcolor="#4D595D" colspan="3" valign="top">
 										<div>&nbsp;</div>
-										<div class="formfonttitle"><% nvram_get("productid"); %> 科学上网插件 - 负载均衡</div>
+										<div class="formfonttitle"><% nvram_get("productid"); %> SS Plugin - Load Balance</div>
 										<div style="float:right; width:15px; height:25px;margin-top:-20px">
 											<img id="return_btn" onclick="reload_Soft_Center();" align="right" style="cursor:pointer;position:absolute;margin-left:-30px;margin-top:-25px;" title="返回软件中心" src="/images/backprev.png" onMouseOver="this.src='/images/backprevclick.png'" onMouseOut="this.src='/images/backprev.png'"></img>
 										</div>

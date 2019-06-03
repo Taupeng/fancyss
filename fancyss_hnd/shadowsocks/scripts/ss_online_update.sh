@@ -137,7 +137,7 @@ add_ssr_servers(){
 
 add_ss_servers(){
 	ssindex=$(($(dbus list ssconf_basic_|grep _name_ | cut -d "=" -f1|cut -d "_" -f4|sort -rn|head -n1)+1))
-	echo_date 添加SS节点：$remarks
+	echo_date Add SS Node：$remarks
 	dbus set ssconf_basic_name_$ssindex=$remarks
 	dbus set ssconf_basic_mode_$ssindex="2"
 	dbus set ssconf_basic_server_$ssindex=$server

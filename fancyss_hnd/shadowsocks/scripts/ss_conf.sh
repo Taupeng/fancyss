@@ -234,7 +234,7 @@ restore_now(){
 	echo_date 完成！
 }
 
-reomve_ping(){
+remove_ping(){
 	# flush previous ping value in the table
 	pings=`dbus list ssconf_basic_ping | sort -n -t "_" -k 4|cut -d "=" -f 1`
 	if [ -n "$pings" ];then
@@ -274,6 +274,6 @@ case $2 in
 	echo XU6J03M6 >> /tmp/upload/ss_log.txt
 	;;
 5)
-	reomve_ping
+	remove_ping
 	;;
 esac

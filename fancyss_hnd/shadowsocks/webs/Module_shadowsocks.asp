@@ -55,9 +55,9 @@ var option_modes = [["1", "gfwlist模式"], ["2", "大陆白名单模式"], ["3"
 var option_method = [ "none",  "rc4",  "rc4-md5",  "rc4-md5-6",  "aes-128-gcm",  "aes-192-gcm",  "aes-256-gcm",  "aes-128-cfb",  "aes-192-cfb",  "aes-256-cfb",  "aes-128-ctr",  "aes-192-ctr",  "aes-256-ctr",  "camellia-128-cfb",  "camellia-192-cfb",  "camellia-256-cfb",  "bf-cfb",  "cast5-cfb",  "idea-cfb",  "rc2-cfb",  "seed-cfb",  "salsa20",  "chacha20",  "chacha20-ietf",  "chacha20-ietf-poly1305",  "xchacha20-ietf-poly1305" ];
 var option_protocals = [ "origin", "verify_simple", "verify_sha1", "auth_sha1", "auth_sha1_v2", "auth_sha1_v4", "auth_aes128_md5", "auth_aes128_sha1", "auth_chain_a", "auth_chain_b", "auth_chain_c", "auth_chain_d", "auth_chain_e", "auth_chain_f" ];
 var option_obfs = ["plain", "http_simple", "http_post", "tls1.2_ticket_auth"];
-var option_v2enc = [["none", "不加密"], ["auto", "自动"], ["aes-128-cfb", "aes-128-cfb"], ["aes-128-gcm", "aes-128-gcm"], ["chacha20-poly1305", "chacha20-poly1305"]];
-var option_headtcp = [["none", "不伪装"], ["http", "伪装http"]];
-var option_headkcp = [["none", "不伪装"], ["srtp", "伪装视频通话(srtp)"], ["utp", "伪装BT下载(uTP)"], ["wechat-video", "伪装微信视频通话"]];
+var option_v2enc = [["none", "None"], ["auto", "Auto"], ["aes-128-cfb", "aes-128-cfb"], ["aes-128-gcm", "aes-128-gcm"], ["chacha20-poly1305", "chacha20-poly1305"]];
+var option_headtcp = [["none", "No Obfs"], ["http", "Obfs http"]];
+var option_headkcp = [["none", "No Obfs"], ["srtp", "Obfs (SRTP)"], ["utp", "Obfs BT (uTP)"], ["wechat-video", "Obfs WeChat Call"]];
 var logf = 0;
 var logc = 0;
 
@@ -2061,7 +2061,7 @@ function toggle_func() {
 			$("#look_logc").removeClass("active3");
 			$('#log_content_f').show();
 			$('#log_content_c').hide();
-			$("#stauts_bar_text").html("👇 国外状态 - www.google.com.tw 👇")
+			$("#stauts_bar_text").html("Connection Status [INTL] - www.google.com")
 			$('#apply_button').hide();
 			verifyFields();
 			if(logf == 0) get_status_log(1);
@@ -2155,14 +2155,14 @@ function lookup_status_log(s) {
 		$('#log_content_c').hide();
 		$("#look_logf").addClass("active3");
 		$("#look_logc").removeClass("active3");
-		$("#stauts_bar_text").html("👇 国外状态 - www.google.com.tw 👇")
+		$("#stauts_bar_text").html("Connection Status [INTL] - www.google.com")
 		if(logf == 0) get_status_log(1);
 	}else{
 		$('#log_content_f').hide();
 		$('#log_content_c').show();
 		$("#look_logf").removeClass("active3");
 		$("#look_logc").addClass("active3");
-		$("#stauts_bar_text").html("👇 国内状态 - www.baidu.com 👇")
+		$("#stauts_bar_text").html("Connection Status [DOM] - www.baidu.com")
 		if(logc == 0) get_status_log(2);
 	}
 }
@@ -2851,11 +2851,11 @@ function save_failover() {
 														</div>
 														<div id="ss_version_show" style="display:table-cell;float: left;position: absolute;margin-left:170px;padding: 5.5px 0px;">
 															<a class="hintstyle" href="javascript:void(0);" onclick="openssHint(12)">
-																<i>当前版本：</i>
+																<i>Current Version：</i>
 															</a>
 														</div>
 														<div style="display:table-cell;float: left;margin-left:270px;position: absolute;padding: 5.5px 0px;">
-															<a type="button" class="ss_btn" target="_blank" href="https://github.com/hq450/fancyss/blob/master/fancyss_hnd/Changelog.txt">更新日志</a>
+															<a type="button" class="ss_btn" target="_blank" href="https://github.com/Taupeng/fancyss/blob/master/fancyss_hnd/Changelog.txt">更新日志</a>
 														</div>
 														<div style="display:table-cell;float: left;margin-left:350px;position: absolute;padding: 5.5px 0px;">
 															<a type="button" class="ss_btn" href="javascript:void(0);" onclick="pop_help()">插件帮助</a>
@@ -2867,13 +2867,13 @@ function save_failover() {
 										<div id="ss_status1" style="margin:-1px 0px 0px 0px;">
 											<table style="margin:-1px 0px 0px 0px;" width="100%" border="1" align="center" cellpadding="4" cellspacing="0" bordercolor="#6b8fa3" class="FormTable" >
 												<tr id="ss_state">
-												<th>插件运行状态</th>
+												<th>Connection Status</th>
 													<td>
 														<div style="display:table-cell;float: left;margin-left:0px;">
 															<a class="hintstyle" href="javascript:void(0);" onclick="openssHint(0)">
-																<span id="ss_state2">国外连接 - Waiting...</span>
+																<span id="ss_state2">International - Waiting...</span>
 																<br/>
-																<span id="ss_state3">国内连接 - Waiting...</span>
+																<span id="ss_state3">Domestic - Waiting...</span>
 															</a>
 														</div>
 														<div style="display:table-cell;float: left;margin-left:270px;position: absolute;padding: 10.5px 0px;">
@@ -2890,17 +2890,17 @@ function save_failover() {
 											<table style="margin:10px 0px 0px 0px;border-collapse:collapse" width="100%" height="37px">
 												<tr>
 													<td cellpadding="0" cellspacing="0" style="padding:0" border="1" bordercolor="#222">
-														<input id="show_btn0" class="show-btn0" style="cursor:pointer" type="button" value="帐号设置" />
-														<input id="show_btn1" class="show-btn1" style="cursor:pointer" type="button" value="节点管理" />
-														<input id="show_btn2" class="show-btn2" style="cursor:pointer" type="button" value="故障转移" />
-														<input id="show_btn3" class="show-btn3" style="cursor:pointer" type="button" value="DNS设定" />
-														<input id="show_btn4" class="show-btn4" style="cursor:pointer" type="button" value="黑白名单" />
-														<input id="show_btn5" class="show-btn5" style="cursor:pointer" type="button" value="KCP加速" />
-														<input id="show_btn6" class="show-btn6" style="cursor:pointer" type="button" value="UDP加速"/>
-														<input id="show_btn7" class="show-btn7" style="cursor:pointer" type="button" value="更新管理" />
-														<input id="show_btn8" class="show-btn8" style="cursor:pointer" type="button" value="访问控制" />
-														<input id="show_btn9" class="show-btn9" style="cursor:pointer" type="button" value="附加功能" />
-														<input id="show_btn10" class="show-btn10" style="cursor:pointer" type="button" value="查看日志" />
+														<input id="show_btn0" class="show-btn0" style="cursor:pointer" type="button" value="Account" />
+														<input id="show_btn1" class="show-btn1" style="cursor:pointer" type="button" value="Node Mgnt" />
+														<input id="show_btn2" class="show-btn2" style="cursor:pointer" type="button" value="SS Status" />
+														<input id="show_btn3" class="show-btn3" style="cursor:pointer" type="button" value="DNS Set" />
+														<input id="show_btn4" class="show-btn4" style="cursor:pointer" type="button" value="Whitelist" />
+														<input id="show_btn5" class="show-btn5" style="cursor:pointer" type="button" value="KCP Accel" />
+														<input id="show_btn6" class="show-btn6" style="cursor:pointer" type="button" value="UDP Accel"/>
+														<input id="show_btn7" class="show-btn7" style="cursor:pointer" type="button" value="Update" />
+														<input id="show_btn8" class="show-btn8" style="cursor:pointer" type="button" value="Access Ctl" />
+														<input id="show_btn9" class="show-btn9" style="cursor:pointer" type="button" value="Feature+" />
+														<input id="show_btn10" class="show-btn10" style="cursor:pointer" type="button" value="Logs" />
 													</td>
 												</tr>
 											</table>
@@ -2911,10 +2911,10 @@ function save_failover() {
 													<td>
 														<table width="100%" border="0" align="left" cellpadding="0" cellspacing="0" class="vpnClientTitle">
 															<tr>
-													  		<td width="25%" align="center" id="ssTitle" onclick="tabclickhandler(0);">添加SS账号</td>
-													  		<td width="25%" align="center" id="ssrTitle" onclick="tabclickhandler(1);">添加SSR账号</td>
-													  		<td width="25%" align="center" id="gamev2Title" onclick="tabclickhandler(2);">添加koolgame账号</td>
-													  		<td width="25%" align="center" id="v2rayTitle" onclick="tabclickhandler(3);">添加V2Ray配置</td>
+													  		<td width="25%" align="center" id="ssTitle" onclick="tabclickhandler(0);">Add SS</td>
+													  		<td width="25%" align="center" id="ssrTitle" onclick="tabclickhandler(1);">Add SSR</td>
+													  		<td width="25%" align="center" id="gamev2Title" onclick="tabclickhandler(2);">Add koolgame</td>
+													  		<td width="25%" align="center" id="v2rayTitle" onclick="tabclickhandler(3);">Add V2Ray</td>
 															</tr>
 														</table>
 													</td>
